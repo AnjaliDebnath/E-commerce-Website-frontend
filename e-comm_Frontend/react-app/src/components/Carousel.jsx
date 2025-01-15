@@ -21,8 +21,8 @@ const Carousel = ({ images }) => {
     },
     image: {
       width: "100vw", // Full screen width
-      height: "1%", // Full screen height
-      // objectFit: "cover", // Ensure the image covers the entire area
+      height: "100vh", // Full screen height
+      objectFit: "cover", // Ensure the image covers the entire area
     },
     button: {
       position: "absolute",

@@ -5,6 +5,7 @@ import Footer from '../components/Footer';
 import ContactLinks from '../components/ContactLinks';
 import Carousel from '../components/Carousel';
 import images from '../components/CarouselImages';
+import CardGrid1 from '../components/CardGrid1';
 
 
 
@@ -18,6 +19,7 @@ const HomePage = () => {
         <Navbar/>
         <QuickLinks/>
         <Carousel images={images} />
+        <CardGrid1/>
         <ContactLinks/>
         <Footer/>
 
