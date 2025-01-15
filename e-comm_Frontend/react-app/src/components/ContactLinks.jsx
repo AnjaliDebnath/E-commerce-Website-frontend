@@ -3,7 +3,7 @@ import React from "react";
 const ContactLinks = () => {
   const styles = {
     container: {
-        backgroundColor: "#131a22",
+        backgroundColor: "#232f3e",
         color: "#ffffff",
         padding: "20px 40px",
         fontSize: "14px",

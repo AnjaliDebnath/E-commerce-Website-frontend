@@ -1,24 +1,140 @@
 import React from "react";
-import { ProSidebar, Menu, MenuItem, SubMenu } from "react-pro-sidebar";
-import "react-pro-sidebar/dist/css/styles.css";
-import { FaHome, FaGift, FaList, FaTags } from "react-icons/fa";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
 
-const Sidebar = () => {
+const Sidebar = ({ closeSidebar }) => {
+  const styles = {
+    overlay: {
+      position: "fixed",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "100%",
+      backgroundColor: "rgba(0, 0, 0, 0.5)",
+      zIndex: 999,
+    },
+    sidebar: {
+      position: "fixed",
+      top: 0,
+      left: 0,
+      width: "300px",
+      height: "100%",
+      backgroundColor: "#fff",
+      boxShadow: "2px 0 5px rgba(0, 0, 0, 0.5)",
+      zIndex: 1000,
+      overflowY: "auto",
+    },
+    closeButton: {
+      position: "absolute",
+      top: "10px",
+      right: "10px",
+      fontSize: "20px",
+      background: "none",
+      border: "none",
+      cursor: "pointer",
+    },
+    header: {
+      backgroundColor: "#232f3e",
+      color: "#fff",
+      padding: "15px",
+      fontSize: "18px",
+      fontWeight: "bold",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "space-between",
+      position: "sticky",
+      top: 0,
+      zIndex: 1001,
+    },
+    section: {
+      padding: "15px",
+      borderBottom: "1px solid #ddd",
+    },
+    sectionTitle: {
+      fontSize: "16px",
+      fontWeight: "bold",
+      marginBottom: "10px",
+    },
+    link: {
+      display: "block",
+      color: "black",
+      textDecoration: "none",
+      padding: "5px 0",
+      cursor: "pointer",
+    },
+    seeAll: {
+      color: "black",
+      fontWeight: "bold",
+      cursor: "pointer",
+      marginTop: "10px",
+      display: "inline-block",
+    },
+  };
+
   return (
-    <ProSidebar>
-        <Menu iconShape="square">
-        <MenuItem icon={<FaHome />}>Home</MenuItem>
-        <SubMenu title="Categories" icon={<FaList />}>
-          <MenuItem>Fresh</MenuItem>
-          <MenuItem>Gift Ideas</MenuItem>
-          <MenuItem>Today's Deals</MenuItem>
-          <MenuItem>Health & Personal Care</MenuItem>
-        </SubMenu>
-        <MenuItem icon={<FaGift />}>Gift Cards</MenuItem>
-        <MenuItem icon={<FaTags />}>Amazon Basics</MenuItem>
-      </Menu>
-      
-    </ProSidebar>
+    <>
+      {/* Overlay */}
+      <div style={styles.overlay} onClick={closeSidebar}></div>
+
+      {/* Sidebar */}
+      <div style={styles.sidebar}>
+        {/* Header */}
+        <div style={styles.header}>
+          <span>Hello, Anjali</span>
+          <button style={styles.closeButton} onClick={closeSidebar}>
+            &times;
+          </button>
+        </div>
+
+        {/* Trending Section */}
+        <div style={styles.section}>
+          <div style={styles.sectionTitle}>Trending</div>
+          <a style={styles.link}>Best Sellers</a>
+          <a style={styles.link}>New Releases</a>
+          <a style={styles.link}>Movers and Shakers</a>
+        </div>
+
+        {/* Digital Content and Devices Section */}
+        <div style={styles.section}>
+          <div style={styles.sectionTitle}>Digital Content and Devices</div>
+          <a style={styles.link}>Amazon miniTV - FREE entertainment</a>
+          <a style={styles.link}>Echo & Alexa</a>
+          <a style={styles.link}>Fire TV</a>
+          <a style={styles.link}>Kindle E-Readers & eBooks</a>
+          <a style={styles.link}>Audible Audiobooks</a>
+          <a style={styles.link}>Amazon Prime Video</a>
+          <a style={styles.link}>Amazon Prime Music</a>
+        </div>
+
+        {/* Shop by Category Section */}
+        <div style={styles.section}>
+          <div style={styles.sectionTitle}>Shop by Category</div>
+          <a style={styles.link}>Mobiles, Computers</a>
+          <a style={styles.link}>TV, Appliances, Electronics</a>
+          <a style={styles.link}>Men's Fashion</a>
+          <a style={styles.link}>Women's Fashion</a>
+          <span style={styles.seeAll}>See all &#9660;</span>
+        </div>
+
+        {/* Programs & Features Section */}
+        <div style={styles.section}>
+          <div style={styles.sectionTitle}>Programs & Features</div>
+          <a style={styles.link}>Amazon Pay</a>
+          <a style={styles.link}>Gift Cards & Mobile Recharges</a>
+          <a style={styles.link}>Amazon Launchpad</a>
+          <a style={styles.link}>Amazon Business</a>
+          <span style={styles.seeAll}>See all &#9660;</span>
+        </div>
+
+        {/* Help & Settings Section */}
+        <div style={styles.section}>
+          <div style={styles.sectionTitle}>Help & Settings</div>
+          <a style={styles.link}>Your Account</a>
+          <a style={styles.link}>Customer Service</a>
+          <a style={styles.link}>Logout</a>
+        </div>
+      </div>
+    </>
   );
 };
 

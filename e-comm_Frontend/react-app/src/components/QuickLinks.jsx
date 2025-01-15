@@ -1,7 +1,10 @@
-import React from "react";
-// import Sidebar from "./Sidebar"; 
-import Links from "./Links"; 
+import React, { useState } from "react";
+import Sidebar from "./Sidebar";
+import Links from "./Links";
+
 const QuickLinks = () => {
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
   const styles = {
     container: {
       display: "flex",
@@ -27,16 +30,27 @@ const QuickLinks = () => {
   };
 
   return (
-    <div style={styles.container}>
-      {/* Left Section */}
-      <div style={styles.left}>
-        {/* Sidebar Placeholder */}
-        {/* <Sidebar /> */}
-        <button style={styles.allButton}>All</button>
+    <div>
+      {/* Quick Links Bar */}
+      <div style={styles.container}>
+        {/* Left Section */}
+        <div style={styles.left}>
+          <button
+            style={styles.allButton}
+            onClick={() => setIsSidebarOpen(true)} // Open Sidebar
+          >
+            All
+          </button>
+        </div>
+
+        {/* Center Links Section */}
+        <Links />
       </div>
 
-      {/* Center Links Section */}
-      <Links />
+      {/* Sidebar Component */}
+      {isSidebarOpen && (
+        <Sidebar closeSidebar={() => setIsSidebarOpen(false)} />
+      )}
     </div>
   );
 };
