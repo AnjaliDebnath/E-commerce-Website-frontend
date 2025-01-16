@@ -9,19 +9,19 @@ const Carousel = ({ images }) => {
       alignItems: "center",
       justifyContent: "center",
       position: "relative",
-      width: "100vw", // Full screen width
-      height: "100vh", // Full screen height
+      width:"100vw", // Full screen width
+      height: "60vh", // Full screen height
       overflow: "hidden",
     },
     imageContainer: {
       display: "flex",
+      // flexDirection: "flex-column",
       transition: "transform 0.5s ease-in-out",
-      transform: `translateX(-${currentIndex * 100}%)`,
-      width: `${images.length * 100}vw`, // Adjust container width to fit all images
+      transform: `translateX(-${currentIndex * 100}%)`
     },
     image: {
       width: "100vw", // Full screen width
-      height: "100vh", // Full screen height
+      height: "60vh", // Full screen height
       objectFit: "cover", // Ensure the image covers the entire area
     },
     button: {

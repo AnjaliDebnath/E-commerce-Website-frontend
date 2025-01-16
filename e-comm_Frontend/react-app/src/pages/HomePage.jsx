@@ -1,4 +1,5 @@
 import React from 'react';
+
 import Navbar from '../components/Navbar';
 import QuickLinks from '../components/QuickLinks';
 import Footer from '../components/Footer';
@@ -10,7 +11,9 @@ import ProductGrid from '../components/ProductGrid';
 
 
 
+
 const HomePage = () => {
+  
 
 
   return (

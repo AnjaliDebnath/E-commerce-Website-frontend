@@ -2,6 +2,8 @@ import React from "react";
 import amazonLogo from "../assets/images/amazon-logo.jpg";
 import { FaMapMarkerAlt, FaSearch, FaShoppingCart } from "react-icons/fa";
 import styles from "./NavbarStyles";
+import { Link } from "react-router-dom";
+
 
 const Navbar = () => {
   return (
@@ -9,9 +11,12 @@ const Navbar = () => {
       {/* Left Section */}
       <div style={styles.leftContainer}>
         {/* Logo */}
+        <Link to="/">
         <div style={styles.logoContainer}>
           <img src={amazonLogo} alt="Amazon" style={styles.logo} />
         </div>
+        </Link>
+        
 
         {/* Delivery Location */}
         <div style={styles.locationContainer}>
@@ -76,11 +81,11 @@ const Navbar = () => {
         </div>
 
         {/* Cart */}
-        <div style={styles.cart}>
+        <Link to="/cart" style={styles.cart}> {/* Add Link to redirect to /cart */}
           <FaShoppingCart style={styles.cartIcon} />
           <span style={styles.cartCount}>1</span>
           <span style={styles.link}>Cart</span>
-        </div>
+        </Link>
       </div>
     </div>
   );

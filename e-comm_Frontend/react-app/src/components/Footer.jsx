@@ -7,31 +7,47 @@ const Footer = () => {
       color: "#ffffff",
       padding: "20px",
       fontSize: "14px",
-      // position: "fixed",
+      position: "relative", // Change from "bottom" to "relative"
       bottom: 0,
       left: 0,
       right: 0,
+      height:"200px"
     },
     linksContainer: {
+      backgroundColor: "#131a22",
+      color: "#ffffff",
       display: "grid",
       gridTemplateColumns: "repeat(4, 1fr)", // 4 columns layout
       gap: "20px",
       justifyContent: "center",
       alignItems: "start",
       textAlign: "left",
-      marginBottom: "10px",
+      left: 0,
+      right: 0,
+      height:"200px"
     },
     linkGroup: {
+      backgroundColor: "#131a22",
+      color: "#ffffff",
       lineHeight: "1.8",
+      left: 0,
+      right: 0,
     },
     linkTitle: {
+      backgroundColor: "#131a22",
+      color: "#ffffff",
       fontWeight: "bold",
+      left: 0,
+      right: 0,
     },
     copyright: {
+      backgroundColor: "#131a22",
       textAlign: "center",
       fontSize: "12px",
-      color: "#d0d0d0",
-      marginTop: "10px",
+      color: "#ffffff",
+      left: 0,
+      right: 0,
+      // marginTop: "10px",
     },
   };
 
