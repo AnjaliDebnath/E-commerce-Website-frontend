@@ -1,121 +1,76 @@
-import React, { useState } from "react";
+import React from "react";
+import Slider from "react-slick";
+import image1 from "../assets/carousel-images/c1.jpg";
+import image2 from "../assets/carousel-images/c2.jpg";
+import image3 from "../assets/carousel-images/c3.jpg";
+import image4 from "../assets/carousel-images/c4.jpg";
+// Ensure all required CSS files are imported
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 
-const Carousel = ({ images }) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-
-  const styles = {
-    carouselContainer: {
-      display: "flex",
-      alignItems: "center",
-      justifyContent: "center",
-      position: "relative",
-      width:"100vw", // Full screen width
-      height: "60vh", // Full screen height
-      overflow: "hidden",
-    },
-    imageContainer: {
-      display: "flex",
-      // flexDirection: "flex-column",
-      transition: "transform 0.5s ease-in-out",
-      transform: `translateX(-${currentIndex * 100}%)`
-    },
-    image: {
-      width: "100vw", // Full screen width
-      height: "60vh", // Full screen height
-      objectFit: "cover", // Ensure the image covers the entire area
-    },
-    button: {
-      position: "absolute",
-      top: "50%",
-      transform: "translateY(-50%)",
-      backgroundColor: "rgba(0, 0, 0, 0.5)",
-      color: "#fff",
-      border: "none",
-      padding: "10px 20px",
-      cursor: "pointer",
-      zIndex: 2,
-    },
-    leftButton: {
-      left: "10px",
-    },
-    rightButton: {
-      right: "10px",
-    },
-    indicators: {
-      display: "flex",
-      justifyContent: "center",
-      marginTop: "10px",
-    },
-    indicator: {
-      width: "10px",
-      height: "10px",
-      margin: "0 5px",
-      borderRadius: "50%",
-      backgroundColor: "#ccc",
-      cursor: "pointer",
-    },
-    activeIndicator: {
-      backgroundColor: "#000",
-    },
-  };
-
-  const nextSlide = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === images.length - 1 ? 0 : prevIndex + 1
-    );
-  };
-
-  const prevSlide = () => {
-    setCurrentIndex((prevIndex) =>
-      prevIndex === 0 ? images.length - 1 : prevIndex - 1
-    );
+export default function Carousel() {
+  const settings = {
+    dots: true, // Enable dots for better navigation
+    infinite: true,
+    speed: 500,
+    slidesToShow: 1, // Use 1 slide to work with fade effect
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
+    fade: true, // Keep fade for a smooth transition
   };
 
   return (
-    <div style={styles.carouselContainer}>
-      {/* Left Button */}
-      <button
-        style={{ ...styles.button, ...styles.leftButton }}
-        onClick={prevSlide}
-      >
-        &#10094;
-      </button>
-
-      {/* Image Container */}
-      <div style={styles.imageContainer}>
-        {images.map((image, index) => (
+    <div className="relative w-full overflow-hidden">
+      {/* Carousel Content */}
+      <Slider {...settings}>
+        <div className="relative w-full">
           <img
-            key={index}
-            src={image}
-            alt={`Slide ${index + 1}`}
-            style={styles.image}
+            src={image1}
+            alt="Image 1"
+            className="w-full object-contain" // Adjusts to fit full width and maintain aspect ratio
           />
-        ))}
-      </div>
+          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-black opacity-50"></div>
+        </div>
+        <div className="relative w-full">
+          <img
+            src={image2}
+            alt="Image 2"
+            className="w-full object-contain" // Adjusts to fit full width and maintain aspect ratio
+          />
+          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-black opacity-50"></div>
+        </div>
+        <div className="relative w-full">
+          <img
+            src={image3}
+            alt="Image 3"
+            className="w-full object-contain" // Adjusts to fit full width and maintain aspect ratio
+          />
+          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-black opacity-50"></div>
+        </div>
+        <div className="relative w-full">
+          <img
+            src={image4}
+            alt="Image 4"
+            className="w-full object-contain" // Adjusts to fit full width and maintain aspect ratio
+          />
+          <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-transparent to-black opacity-50"></div>
+        </div>
+      </Slider>
 
-      {/* Right Button */}
+      {/* Left and Right Navigation Buttons */}
       <button
-        style={{ ...styles.button, ...styles.rightButton }}
-        onClick={nextSlide}
+        className="absolute top-1/2 left-4 transform -translate-y-1/2 text-white text-4xl z-10"
+        onClick={() => document.querySelector(".slick-prev")?.click()}
       >
-        &#10095;
+        &#8249;
       </button>
-
-      {/* Indicators */}
-      <div style={styles.indicators}>
-        {images.map((_, index) => (
-          <div
-            key={index}
-            style={{
-              ...styles.indicator,
-              ...(currentIndex === index ? styles.activeIndicator : {}),
-            }}
-            onClick={() => setCurrentIndex(index)}
-          ></div>
-        ))}
-      </div>
+      <button
+        className="absolute top-1/2 right-4 transform -translate-y-1/2 text-white text-4xl z-10"
+        onClick={() => document.querySelector(".slick-next")?.click()}
+      >
+        &#8250;
+      </button>
     </div>
   );
-};
-
-export default Carousel;
+}

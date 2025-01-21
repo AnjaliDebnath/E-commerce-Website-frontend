@@ -10,7 +10,7 @@ const CartItem = ({ product, incrementQuantity, decrementQuantity }) => {
         src={product.imageSrc}
         alt={product.name}
         className="w-24 h-24 object-contain"
-      />
+      />  
       {/* Product Details */}
       <div className="flex-1 px-4">
         <h3 className="text-md font-semibold">{product.name}</h3>
