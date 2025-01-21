@@ -8,6 +8,7 @@ import Carousel from '../components/Carousel';
 import images from '../components/CarouselImages';
 import CardGrid1 from '../components/CardGrid1';
 import ProductGrid from '../components/ProductGrid';
+import { CartProvider } from '../components/CartContext';
 
 
 
@@ -20,6 +21,7 @@ const HomePage = () => {
 
 
     <div style={{ minHeight: "100vh", paddingBottom: "60px" }}>
+      <CartProvider>
         <Navbar/>
         <QuickLinks/>
         <Carousel images={images} />
@@ -27,6 +29,7 @@ const HomePage = () => {
         <ProductGrid/>
         <ContactLinks/>
         <Footer/>
+      </CartProvider>
 
       
     </div>
