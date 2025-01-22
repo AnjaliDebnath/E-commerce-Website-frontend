@@ -60,13 +60,13 @@ export default function Carousel() {
 
       {/* Left and Right Navigation Buttons */}
       <button
-        className="absolute top-1/2 left-4 transform -translate-y-1/2 text-white text-4xl z-10"
+        className="absolute top-1/4 left-4 transform -translate-y-1/2 text-white text-4xl z-10"
         onClick={() => document.querySelector(".slick-prev")?.click()}
       >
         &#8249;
       </button>
       <button
-        className="absolute top-1/2 right-4 transform -translate-y-1/2 text-white text-4xl z-10"
+        className="absolute top-1/4 right-4 transform -translate-y-1/2 text-white text-4xl z-10"
         onClick={() => document.querySelector(".slick-next")?.click()}
       >
         &#8250;

@@ -11,9 +11,10 @@ const styles = {
     image: {
       width: "220px",
       height: "270px",
-      objectFit: "cover",
+      object: "contain",
       borderRadius: "8px",
       marginBottom: "12px",
+      marginLeft:"20px"
     },
     title: {
       fontWeight: "600",

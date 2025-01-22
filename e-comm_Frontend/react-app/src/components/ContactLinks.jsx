@@ -48,6 +48,10 @@ const ContactLinks = () => {
 
   return (
     <div style={styles.container}>
+      <div className="flex justify-center items-center font-bold py-4 text-lg">Back to top</div>
+
+      <div class="border-t border-gray-500"></div>
+      
       {/* Top Grid */}
       <div style={styles.linksGrid}>
         <div style={styles.section}>
