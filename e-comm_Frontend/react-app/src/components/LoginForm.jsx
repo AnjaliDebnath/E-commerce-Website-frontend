@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-// import {useDispatch} from "@reduxjs/toolkit";
+import {useDispatch} from "react-redux";
 
 import axios from "axios";
+import { setCurrentUser } from "../slices/AuthSlice";
 
 const LINK = "http://localhost:3997"; 
 
 const LoginForm = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate(); 
   
   const [email, setEmail] = useState(""); 
@@ -85,17 +87,19 @@ const LoginForm = () => {
     }
 
     try {
-      const response = await axios.post(`${LINK}/login`, { email, password });
+      const response = await axios.post(`${LINK}/auth/login`, { email, password });
 
       // Store tokens in localStorage
       const { accessToken, refreshToken } = response.data;
       localStorage.setItem("accessToken", accessToken);
       localStorage.setItem("refreshToken", refreshToken);
 
-      const { username } = response.data; // Ensure the backend sends it
-      localStorage.setItem("username", username);
+      const username = response.data.name; // Ensure the backend sends it
+      // console.log(username);
+      // localStorage.setItem("username", username);
 
       console.log("Login successful:", response.data);
+      dispatch(setCurrentUser({username: username}));
       navigate("/"); // Redirect to home page after successful login
     } catch (err) {
       console.error("Error: ", err.response?.status, err.response?.data || err.message);

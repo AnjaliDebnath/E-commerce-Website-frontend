@@ -8,11 +8,22 @@ import LoginForm from './components/LoginForm.jsx';
 import RegisterForm from './components/RegisterForm.jsx';
 import ProfilePage from './pages/ProfilePage.jsx';
 import Product from './pages/Product.js';
+import axios from 'axios';
+import { useEffect } from 'react';
 
 
-
+const LINK = `http://localhost:5050`
 
 function App() {
+  // const token = local
+
+  // useEffect(()=>{
+  //   async function updateProfile(){
+  //     const res = await axios.get(`${LINK}/tokensetup`, {
+  //       headers: {Authorization: `Bearer ${token}`}
+  //     })
+  //   }
+  // })
  
   return (
     <Router>

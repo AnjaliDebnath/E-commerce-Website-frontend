@@ -1,8 +1,33 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { useDispatch , useSelector} from "react-redux";
+import axios from "axios";
+import { setCurrentUser } from "../slices/AuthSlice";
+
+const LINK = `http://localhost:5050`;
+
 
 const Sidebar = ({ closeSidebar }) => {
+  const dispatch = useDispatch();
+  // const [user, setuser] = useState("");
+  const user = useSelector((state)=>state.auth.currentUser)
+
+  useEffect(() =>{
+    async function userDetails(token){
+      try{
+        const res = await axios.get(`${LINK}/users/me`,{
+          headers: {Authorization: `Bearer ${token}`}
+        })
+        // console.log(res.data);
+        dispatch(setCurrentUser({username: res.data}))
+      } catch(err){
+        console.error("Error in navbar",err.message);
+      }
+    }
+    userDetails(localStorage.getItem('accessToken')); 
+  }, [user])
+
   const styles = {
     overlay: {
       position: "fixed",
@@ -10,7 +35,7 @@ const Sidebar = ({ closeSidebar }) => {
       left: 0,
       width: "100%",
       height: "100%",
-      backgroundColor: "rgba(0, 0, 0, 0.5)",
+      backgroundColor: "rgba(0, 0, 0, 0.8)",
       zIndex: 999,
     },
     sidebar: {
@@ -80,7 +105,7 @@ const Sidebar = ({ closeSidebar }) => {
       <div style={styles.sidebar}>
         {/* Header */}
         <div style={styles.header}>
-          <span>Hello, Anjali</span>
+          <span>Hello, {user}</span>
           <button style={styles.closeButton} onClick={closeSidebar}>
             &times;
           </button>

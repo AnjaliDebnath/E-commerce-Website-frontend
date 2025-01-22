@@ -3,14 +3,31 @@ import amazonLogo from "../assets/images/amazon-logo.jpg";
 import { FaMapMarkerAlt, FaSearch, FaShoppingCart } from "react-icons/fa";
 import styles from "./NavbarStyles";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
+import { setCurrentUser } from "../slices/AuthSlice";
+
+const LINK = `http://localhost:5050`;
 
 const Navbar = () => {
-  const [user, setuser] = useState("");
-  useEffect(() => {
-    const username = localStorage.getItem("username");
-    setuser(username || "Guest");
-  }, []);
+  const dispatch = useDispatch();
+  
+  const user = useSelector((state)=>state.auth.currentUser)
+
+  useEffect(() =>{
+    async function userDetails(token){
+      try{
+        const res = await axios.get(`${LINK}/users/me`,{
+          headers: {Authorization: `Bearer ${token}`}
+        })
+        // console.log(res.data);
+        dispatch(setCurrentUser({username: res.data}))
+      } catch(err){
+        console.error("Error in navbar",err.message);
+      }
+    }
+    userDetails(localStorage.getItem('accessToken')); 
+  }, [user])
 
   const cartItems = useSelector((state) => state.cart.items); // Get cart items from Redux store
 

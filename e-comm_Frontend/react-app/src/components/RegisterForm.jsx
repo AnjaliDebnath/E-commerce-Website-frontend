@@ -14,7 +14,7 @@ const RegisterForm = () => {
 
   function handleRegister(e) {
     e.preventDefault();
-    axios.post(`${LINK}/register`, {username,email,password}).then((res)=>{
+    axios.post(`${LINK}/auth/register`, {username,email,password}).then((res)=>{
         console.log("Registered successful", res.data);
         navigate('/login');
     }).catch((err)=>{
